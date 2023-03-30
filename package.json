@@ -1,0 +1,32 @@
+{
+  "name": "shiftmaster",
+  "version": "1.0.0",
+  "description": "A command line app for managing a company's employee database using Node.js, Inquirer, and MySQL.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pilotguide9897/ShiftMaster.git"
+  },
+  "keywords": [
+    "Employee",
+    "Database",
+    "Management"
+  ],
+  "author": "Jared Green",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Pilotguide9897/ShiftMaster/issues"
+  },
+  "homepage": "https://github.com/Pilotguide9897/ShiftMaster#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^8.2.4",
+    "mysql2": "^3.2.0"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}
