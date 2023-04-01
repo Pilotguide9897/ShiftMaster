@@ -1,20 +1,32 @@
-const mysql = require ('mysql2');
+// Main menu and action handling
+const inquirer = require('inquirer');
+const inquirerPrompts = require('./Prompts/inquirerprompts');
+const queries = require ('./queries');
+const dbConnection = require('./db');
 
-// Connect to database. 
-const db = mysql.createConnection(
-   {
-    host: 'localhost',
-    // MySQL username
-    user: 'root',
-    password: '4Fxj$FFD5mj56Z5RF1*#',
-    database: 'company_db'
-};
- connection.connect((err) => {
-    if (err) throw err;
-    console.log('conneced to the database.');
- });
+const mainMenuHandler = function () {
+    let response = await inquirer.prompt(inquirerPrompts.userAction);
 
 
-db.query('')
-
-module.exports = connection
+switch (action) {
+    case
+        return ;
+    case
+        return ;
+    case
+        return ;
+    case
+        return ;
+    case
+        return ;
+    case
+        return ;
+    case 'Exit':
+        return closeApp;
+}
+}
+// Close database connection
+const closeApp = function () {
+    console.log('Thank you for using our app. Goodbye!')
+    connection.end();
+} 

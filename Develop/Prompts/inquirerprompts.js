@@ -1,12 +1,11 @@
 const inquirer =require('inquirer');
-const { validate } = require('uuid');
 
-const userPurpose = [
+const userAction = [
     {
         type: 'list',
-        name: 'userPurpose',
+        name: 'action',
         message: 'What would you like to do?',
-        choices:['View All Departments', 'View All Roles', 'View All Employees', 'Add Department', 'Add role', 'Add employee', 'Update Employee Role']
+        choices:['View All Departments', 'View All Roles', 'View All Employees', 'Add Department', 'Add role', 'Add employee', 'Update Employee Role', 'Quit']
     }
 ]
 
@@ -17,7 +16,6 @@ const addDeptName = [
         message: 'What is the name of the department?'
         // validate:
     }
-
 ]
 
 const addRoles = [
@@ -67,6 +65,7 @@ const employees = [
         Choices: ['None', 'John Doe', 'Mike Chan', 'Ashley Rodriguez', 'Kevin Tupik', 'Kunal Singh', 'Malie Brown',]
     }
 ]
+
 const updateEmployee = [
     {
         type: 'input',
@@ -75,3 +74,12 @@ const updateEmployee = [
         l 
     }
 ]
+
+module.exports = {
+    userAction,
+    addDeptName,
+    addRoles,
+    employees,
+    updateEmployee
+};
+

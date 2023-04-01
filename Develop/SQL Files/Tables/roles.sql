@@ -1,3 +1,3 @@
 create TABLE employeeRoles (
-    role_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, title VARCHAR(30), salary DECIMAL, department_id INT 
+    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY , title VARCHAR(30), salary DECIMAL, department_id INT, FOREIGN KEY(department_id) REFERENCES departments(id) 
 );
