@@ -1,3 +1,3 @@
 CREATE TABLE department (
-    id INT PRIMARY KEY, name VARCHAR(30)
+    department_id INT PRIMARY KEY, name VARCHAR(30)
 )
