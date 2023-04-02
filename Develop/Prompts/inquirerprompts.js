@@ -5,7 +5,7 @@ const userAction = [
         type: 'list',
         name: 'action',
         message: 'What would you like to do?',
-        choices:['View All Departments', 'View All Roles', 'View All Employees', 'Add Department', 'Add role', 'Add employee', 'Update Employee Role', 'Quit']
+        choices:['View All Departments', 'View All Roles', 'View All Employees', 'Add Department', 'Add Role', 'Add Employee', 'Update Employee Role', 'View Employees by Manager', 'View Employees By Department', 'Delete Department', 'Delete Role', 'Delete Employee', 'Get Budget by Department', 'Quit']
     }
 ]
 

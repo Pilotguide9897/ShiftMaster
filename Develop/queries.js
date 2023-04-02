@@ -11,10 +11,10 @@ module.exports = {
     updateEmployeeManager = `UPDATE employee SET manager_id = ? WHERE id = ?`,
 
     //bonus
-    viewEMployeeByManager = `SELECT id AS 'Employee ID`,
+    viewEmployeeByManager = `SELECT id AS 'Employee ID`,
     viewEmployeesByDepartment = `SELECT` ,
     deleteDepartment = `DELETE FROM department WHERE `,
-    deleteRoles = `DELETE FROM employeeRoles WHERE title = ?`,
-    deleteEmployees = `DELETE FROM employees WHERE `,
-    getDepartmentBudget = `SELECT CHECKSUM_AGG (CAST(salary AS DECIMAL)) FROM 
+    deleteRole = `DELETE FROM employeeRoles WHERE title = ?`,
+    deleteEmployee = `DELETE FROM employees WHERE `,
+    getBudgetByDepartment = `SELECT CHECKSUM_AGG (CAST(salary AS DECIMAL)) FROM 
 };

@@ -8,18 +8,28 @@ const mainMenuHandler = async function () {
     let response = await inquirer.prompt(inquirerPrompts.userAction);
 
 switch (action) { // I can add the other bonus objectives here too.
-    case 'View All Departments':
-        return viewAllDepartments(queries.);
-    case'View All Roles':
+    case 'View All Roles':
         return viewAllRoles(queries.);
-    case'View Employees':
+    case 'View Employees':
         return viewEmployees(queries.);
-    case'Add Department':
+    case 'Add Department':
         return addDepartment(queries.);
-    case'Add Role':
+    case 'Add Role':
         return addRole(queries.);
-    case'Add Employee':
+    case 'Add Employee':
         return addEmployee(queries.);
+    case 'View Employees by Manager':
+        return viewEmployeeByManager(queries.);
+    case'View Employees by Manager':
+        return viewEmployeeByDepartment(queries.);
+    case 'Delete Department':
+        return deleteDepartment(queries.);
+    case 'Delete Role':
+        return deleteRole(queries.);
+    case 'Delete Employee':
+        return deleteEmployee(queries.);
+    case 'Get Budget by Department':
+        return getBudgetByDepartment(queries.);
     case 'Exit':
         return closeApp;
     }
@@ -28,7 +38,7 @@ switch (action) { // I can add the other bonus objectives here too.
 // Query Functions
 
 const viewAllDepartments = () => {
-    connection.query(queries. ,(err, res) => {
+    connection.query(queries.viewAllDepartments,(err, res) => {
         if (err) {
             throw new Error('Unable to view departments')
         }
@@ -38,7 +48,7 @@ const viewAllDepartments = () => {
 }
 
 const viewAllRoles = () => {
-    connection.query(queries. ,(err, res) => {
+    connection.query(queries.viewAllRoles,(err, res) => {
         if (err) {
             throw new Error('Unable to access database')
         }
@@ -47,7 +57,7 @@ const viewAllRoles = () => {
 };
 
 const viewEmployees = () => {
-    connection.query(queries. ,(err, res) => {
+    connection.query(queries.viewAllEmployees,(err, res) => {
         if (err) {
             throw new Error('Unable to view employees')
         }
