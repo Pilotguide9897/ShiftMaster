@@ -5,7 +5,7 @@ const userAction = [
         type: 'list',
         name: 'action',
         message: 'What would you like to do?',
-        choices:['View All Departments', 'View All Roles', 'View All Employees', 'Add Department', 'Add Role', 'Add Employee', 'Update Employee Role', 'View Employees by Manager', 'View Employees By Department', 'Delete Department', 'Delete Role', 'Delete Employee', 'Get Budget by Department', 'Quit']
+        choices:['View All Departments', 'View All Roles', 'View All Employees', 'Add Department', 'Add Role', 'Add Employee', 'Update Employee Role', 'View Employees by Manager', 'View Employees by Department', 'Delete Department', 'Delete Role', 'Delete Employee', 'Get Budget by Department', 'Quit']
     }
 ]
 
@@ -79,7 +79,8 @@ const viewEmployeesByManager = [
     {
         type: '',
         name: 'managerSelection',
-        message: ''
+        message: 'Please select a manager.',
+        choices:
     }
 ]
 
@@ -87,7 +88,8 @@ const viewEmployeesByDepartment = [
     {
         type: '',
         name: 'departmentEmployees',
-        message: ''
+        message: 'Please select a department',
+        choices:
     }
 ]
 
@@ -95,7 +97,8 @@ const deleteDepartment = [
     {
         type: '',
         name: 'removeDepartment',
-        message: ''
+        message: 'Which department would you like to remove?',
+        choices:
     }
 ]
 
@@ -103,7 +106,8 @@ const deleteRole = [
     {
         type: '',
         name: 'removeRole',
-        message: ''
+        message: 'Which role would you like to remove?',
+        choices:
     }
 ]
 
@@ -111,7 +115,8 @@ const deleteEmployee = [
     {
         type: '',
         name: 'removeEmployee',
-        message: ''
+        message: 'Which employee would you like to remove?',
+        choices:
     }
     
 ]
@@ -120,7 +125,8 @@ const getUtilizedDepartmentBudget = [
     {
         type: 'list',
         name: 'departmentBudget',
-        message: ''
+        message: 'Please select a department',
+        choices: 
     }
 ]
 
