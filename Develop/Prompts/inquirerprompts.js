@@ -62,16 +62,65 @@ const addEmployee = [
         type: 'list',
         name: 'employeeManager',
         message: 'Who is the employee\'s manager?',
-        Choices: ['None', 'John Doe', 'Mike Chan', 'Ashley Rodriguez', 'Kevin Tupik', 'Kunal Singh', 'Malie Brown',]
+        Choices: ['None', 'John Doe', 'Mike Chan', 'Ashley Rodriguez', 'Kevin Tupik', 'Kunal Singh', 'Malie Brown']
     }
 ]
 
-const updateEmployee = [
+const updateEmployee = [ //come back to...
     {
-        type: 'input',
+        type: 'list',
         name: 'updateEmpRole',
         message: 'Which employee\'s role would you like to update?',
-        l 
+        choices: 
+    }
+]
+
+const viewEmployeesByManager = [
+    {
+        type: '',
+        name: 'managerSelection',
+        message: ''
+    }
+]
+
+const viewEmployeesByDepartment = [
+    {
+        type: '',
+        name: 'departmentEmployees',
+        message: ''
+    }
+]
+
+const deleteDepartment = [
+    {
+        type: '',
+        name: 'removeDepartment',
+        message: ''
+    }
+]
+
+const deleteRole = [
+    {
+        type: '',
+        name: 'removeRole',
+        message: ''
+    }
+]
+
+const deleteEmployee = [
+    {
+        type: '',
+        name: 'removeEmployee',
+        message: ''
+    }
+    
+]
+
+const getUtilizedDepartmentBudget = [
+    {
+        type: 'list',
+        name: 'departmentBudget',
+        message: ''
     }
 ]
 
@@ -80,6 +129,12 @@ module.exports = {
     addDeptName,
     addRoles,
     addEmployee,
-    updateEmployee
+    updateEmployee,
+    viewEmployeesByManager,
+    viewEmployeesByDepartment,
+    deleteDepartment,
+    deleteRole,
+    deleteEmployee,
+    getUtilizedDepartmentBudget
 };
 

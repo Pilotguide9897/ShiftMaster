@@ -22,6 +22,8 @@ switch (response) { // I can add the other bonus objectives here too.
         return addEmployee();
     case 'View Employees by Manager':
         return viewEmployeeByManager();
+    case 'Update Employee Role':
+        return updateEmployeeRole();
     case'View Employees by Manager':
         return viewEmployeesByDepartment();
     case 'Delete Department':
@@ -96,36 +98,39 @@ const addEmployee = async () => {
         if (err) {
             throw new Error('Unable to add employee')
         };
-        console.log(`Employee '${employeeFName}' successfully added!`);
+        console.log(`Employee '${employeeFName} ${employeeLName}' successfully added!`);
     mainMenuHandler();
     });
 };
 
+const updateEmployeeRole = async () => {
+    let {employeeID, employeeRole} = await inquirer.prompt();
+}
+
 // Functions to add additional functionality
 const viewEmployeeByManager = async () => {
-    
+    let {} = await inquirer.prompt();
 }
 
 const viewEmployeesByDepartment = async () => {
-    
+    let {} = await inquirer.prompt();
 }
 
 const deleteDepartment = async () => {
-    
+    let {} = await inquirer.prompt();
 }
 
 const deleteRole = async () => {
-    
+    let {} = await inquirer.prompt();
 }
 
 const deleteEmployee = async () => {
-    
+    let {} = await inquirer.prompt();
 }
 
 const getBudgetByDepartment = async () => {
-
+    let {} = await inquirer.prompt();
 }
-
 
 // Close database connection
 const closeApp = function () {
