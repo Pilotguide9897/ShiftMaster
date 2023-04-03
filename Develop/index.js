@@ -1,104 +1,130 @@
 // Main menu and action handling
 const inquirer = require('inquirer');
 const inquirerPrompts = require('./Prompts/inquirerprompts');
-const queries = require ('./queries');
+const queries = require ('./queries'); // import inquirer prompts
 const dbConnection = require('./db');
 
 const mainMenuHandler = async function () {
     let response = await inquirer.prompt(inquirerPrompts.userAction);
 
-switch (action) { // I can add the other bonus objectives here too.
+switch (response) { // I can add the other bonus objectives here too.
+    case 'View All Departments':
+        return viewDepartments();
     case 'View All Roles':
-        return viewAllRoles(queries.);
+        return viewRoles();
     case 'View Employees':
-        return viewEmployees(queries.);
+        return viewEmployees();
     case 'Add Department':
-        return addDepartment(queries.);
+        return addDepartment();
     case 'Add Role':
-        return addRole(queries.);
+        return addRole();
     case 'Add Employee':
-        return addEmployee(queries.);
+        return addEmployee();
     case 'View Employees by Manager':
-        return viewEmployeeByManager(queries.);
+        return viewEmployeeByManager();
     case'View Employees by Manager':
-        return viewEmployeeByDepartment(queries.);
+        return viewEmployeesByDepartment();
     case 'Delete Department':
-        return deleteDepartment(queries.);
+        return deleteDepartment();
     case 'Delete Role':
-        return deleteRole(queries.);
+        return deleteRole();
     case 'Delete Employee':
-        return deleteEmployee(queries.);
+        return deleteEmployee();
     case 'Get Budget by Department':
-        return getBudgetByDepartment(queries.);
+        return getBudgetByDepartment();
     case 'Exit':
-        return closeApp;
+        return closeApp();
     }
 };
 
 // Query Functions
-
-const viewAllDepartments = () => {
-    connection.query(queries.viewAllDepartments,(err, res) => {
+const viewDepartments = () => {
+    dbConnection.query(queries.viewAllDepartments,(err, res) => {
         if (err) {
             throw new Error('Unable to view departments')
-        }
+        };
+        console.table(res);
         mainMenuHandler();
-    })
-    
+    }); 
 }
 
-const viewAllRoles = () => {
-    connection.query(queries.viewAllRoles,(err, res) => {
+const viewRoles = () => {
+    dbConnection.query(queries.viewAllRoles,(err, res) => {
         if (err) {
             throw new Error('Unable to access database')
-        }
+        };
+        console.table(res);
         mainMenuHandler();
     }); 
 };
 
 const viewEmployees = () => {
-    connection.query(queries.viewAllEmployees,(err, res) => {
+    dbConnection.query(queries.viewAllEmployees,(err, res) => {
         if (err) {
             throw new Error('Unable to view employees')
-        }
+        };
+        console.table(res);
         mainMenuHandler();
     });
-    
 };
 
 const addDepartment = async () => {
-    connection.query(queries. ,(err, res) => {
+    let {deptName} = await inquirer.prompt(inquirerPrompts.addDeptName);
+    dbConnection.query(queries.addDepartment, [deptName], (err, res) => {
         if (err) {
             throw new Error('Unable to add department')
-        }
+        };
+        console.log( `Department '${name}' added successfully!`);
         mainMenuHandler();
     });
 };
 
 const addRole = async () => {
-    connection.query(queries. ,(err, res) => {
+    let {roleName, roleWage, roleDept} = await inquirer.prompt(inquirerPrompts.addRoles);
+    dbConnection.query(queries.addRole, [roleName, roleWage, roleDept], (err, res) => {
         if (err) {
             throw new Error('Unable to add role')
-        }
+        };
+        console.log(`Role '${title} successfully added!`);
         mainMenuHandler();
     });
 };
 
 const addEmployee = async () => {
-    connection.query(queries. ,(err, res) => {
+    let {employeeFName, employeeLName, employeeRole, employeeManager} = await inquirer.prompt(inquirerPrompts.addEmployee);
+    dbConnection.query(queries.addEmployee, [employeeFName, employeeLName, employeeRole, employeeManager], (err, res) => {
         if (err) {
             throw new Error('Unable to add employee')
-        }
-
+        };
+        console.log(`Employee '${employeeFName}' successfully added!`);
     mainMenuHandler();
     });
 };
 
-// Add additional functionality
+// Functions to add additional functionality
+const viewEmployeeByManager = async () => {
     
+}
 
+const viewEmployeesByDepartment = async () => {
+    
+}
 
+const deleteDepartment = async () => {
+    
+}
 
+const deleteRole = async () => {
+    
+}
+
+const deleteEmployee = async () => {
+    
+}
+
+const getBudgetByDepartment = async () => {
+
+}
 
 
 // Close database connection

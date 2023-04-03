@@ -39,16 +39,16 @@ const addRoles = [
     }
 ]
 
-const employees = [
+const addEmployee = [
     {
         type: 'input',
-        name: 'employeeFname',
+        name: 'employeeFName',
         message: 'What is the employee\'s first name?',
         // validate: 
     },
     {
         type: 'input',
-        name: 'employeeLname',
+        name: 'employeeLName',
         message: 'What is the employee\'s last name?',
         // validate: 
     },
@@ -79,7 +79,7 @@ module.exports = {
     userAction,
     addDeptName,
     addRoles,
-    employees,
+    addEmployee,
     updateEmployee
 };
 
