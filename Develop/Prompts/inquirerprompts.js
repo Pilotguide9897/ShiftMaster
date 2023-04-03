@@ -75,6 +75,22 @@ const updateEmployee = [ //come back to...
     }
 ]
 
+const updateEmployeeManager = [
+    {
+        type: '',
+        name: 'employeeofMan',
+        message: 'Please select a manager.',
+        choices:
+    }
+    {
+        type: '',
+        name: 'newManager',
+        message: 'Please select the new manager or.',
+        choices:
+    }
+
+]
+
 const viewEmployeesByManager = [
     {
         type: '',
@@ -136,6 +152,7 @@ module.exports = {
     addRoles,
     addEmployee,
     updateEmployee,
+    updateEmployeeManager,
     viewEmployeesByManager,
     viewEmployeesByDepartment,
     deleteDepartment,

@@ -108,6 +108,10 @@ const updateEmployeeRole = async () => {
 }
 
 // Functions to add additional functionality
+const updateEmployeeManager = async () => {
+    let {} = await inquirer.prompt();
+}
+
 const viewEmployeeByManager = async () => {
     let {} = await inquirer.prompt();
 }
