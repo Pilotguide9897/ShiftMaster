@@ -1,4 +1,6 @@
 const inquirer =require('inquirer');
+const nameRegex = /^(?!.*  )[A-Za-z ]{3,30}$/;
+const numberRegex = /^\d{1,10}$/;
 
 const userAction = [
     {
@@ -13,8 +15,12 @@ const addDeptName = [
     {
         name: 'addDepartmentName',
         type: 'input',
-        message: 'What is the name of the department?'
-        // validate:
+        message: 'What is the name of the department?',
+        validate: (input) => {
+            if (!nameRegex.test(input)) {
+            return 'Please input a valid department title.'
+            }
+        }
     }
 ]
 
@@ -23,13 +29,21 @@ const addRoles = [
         type: 'input',
         name: 'roleName',
         message: 'What is the name of the role?',
-        // validate: 
+        validate: (input) => {
+            if (!nameRegex.test(input)) {
+            return 'Please input a role title.'
+            }
+        }
     },
     {
         type: 'input',
         name: 'roleWage',
         message: 'What is the salary of the role?',
-        // validate: 
+        validate: (input) => {
+            if (!numberRegex.test(input)) {
+            return 'Please input a valid numerical amount, exlucing hypens, dashes, or spaces.'
+            }
+        }
     },
     {
         type: 'list',
@@ -44,13 +58,21 @@ const addEmployee = [
         type: 'input',
         name: 'employeeFName',
         message: 'What is the employee\'s first name?',
-        // validate: 
+        validate: (input) => {
+            if (!nameRegex.test(input)){
+                return 'Please enter a valid first name.';
+            }
+        },
     },
     {
         type: 'input',
         name: 'employeeLName',
-        message: 'What is the employee\'s last name?',
-        // validate: 
+        message: 'What is the employee\'s surname?',
+        validate: (input) => {
+            if (!nameRegex.test(input)){
+                return 'Please enter a valid surname name.';
+            }
+        },
     },
     {
         type: 'list',
@@ -71,68 +93,68 @@ const updateEmployee = [ //come back to...
         type: 'list',
         name: 'updateEmpRole',
         message: 'Which employee\'s role would you like to update?',
-        choices: 
+        choices: currentEmployeeChoices
     }
 ]
 
 const updateEmployeeManager = [
     {
-        type: '',
+        type: 'list',
         name: 'employeeofMan',
-        message: 'Please select a manager.',
-        choices:
+        message: 'Please select an employee.',
+        choices: currentEmployeeChoices,
     }
     {
-        type: '',
+        type: 'list',
         name: 'newManager',
-        message: 'Please select the new manager or.',
-        choices:
+        message: 'Please select employee\'s new manager',
+        choices: currentEmployeeChoices,
     }
 
 ]
 
 const viewEmployeesByManager = [
     {
-        type: '',
+        type: 'list',
         name: 'managerSelection',
         message: 'Please select a manager.',
-        choices:
+        choices: currentManagerChoices,
     }
 ]
 
 const viewEmployeesByDepartment = [
     {
-        type: '',
+        type: 'list',
         name: 'departmentEmployees',
         message: 'Please select a department',
-        choices:
+        choices: currentDepartmentChoices,
     }
 ]
 
 const deleteDepartment = [
     {
-        type: '',
+        type: 'list',
         name: 'removeDepartment',
         message: 'Which department would you like to remove?',
-        choices:
+        choices: deleteDepartmentChoices,
     }
 ]
 
 const deleteRole = [
     {
-        type: '',
+        type: 'list',
         name: 'removeRole',
         message: 'Which role would you like to remove?',
-        choices:
+        choices: removeRoleChoices,
     }
 ]
 
 const deleteEmployee = [
     {
-        type: '',
+        type: 'list',
         name: 'removeEmployee',
         message: 'Which employee would you like to remove?',
-        choices:
+        choices: currentEmployeeChoices,
     }
     
 ]
@@ -142,7 +164,7 @@ const getUtilizedDepartmentBudget = [
         type: 'list',
         name: 'departmentBudget',
         message: 'Please select a department',
-        choices: 
+        choices: currentDepartmentChoices,
     }
 ]
 
