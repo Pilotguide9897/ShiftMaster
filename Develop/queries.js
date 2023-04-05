@@ -8,6 +8,7 @@ module.exports = {
     addRole: `INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)`,
     updateEmployeeRole: `UPDATE employee SET role_id = ? WHERE id = ?`,
     updateEmployeeManager: `UPDATE employee SET manager_id = ? WHERE id = ?`,
+    getManagerNames: `SELECT `
 
     //bonus queries
     viewEmployeeByManager: `SELECT em.id AS "Employee ID", em.first_name AS "First Name", em.last_name AS "Last Name", man.id AS "Manager ID", man.first_name AS "Manager First Name", man.last_name AS "Manager Last Name" FROM employees AS em LEFT JOIN employees AS man ON em.manager_id = man.id ORDER BY man.id`,

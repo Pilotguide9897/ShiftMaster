@@ -18,7 +18,7 @@ switch (response) { // I can add the other bonus objectives here too.
         return addDepartment();
     case 'Add Role':
         return addRole();
-    case 'Add Employee':
+    case 'Add Employee': //need to 
         return addEmployee();
     case 'View Employees by Manager':
         return viewEmployeeByManager();
@@ -134,6 +134,21 @@ const deleteEmployee = async () => {
 
 const getBudgetByDepartment = async () => {
     let {} = await inquirer.prompt();
+}
+
+const currentManagerNames = async () => {
+    await new Promise ((resolve, reject) => {
+
+        dbConnection.query(queries.managerNames, [])
+
+
+
+        if (reject) {
+            console.log ('Unable to fetch manager names.');
+        } else {
+            resolve 
+        }
+    })
 }
 
 // Close database connection

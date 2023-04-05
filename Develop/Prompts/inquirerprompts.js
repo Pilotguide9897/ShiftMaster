@@ -20,6 +20,7 @@ const addDeptName = [
             if (!nameRegex.test(input)) {
             return 'Please input a valid department title.'
             }
+            return true;
         }
     }
 ]
@@ -33,6 +34,7 @@ const addRoles = [
             if (!nameRegex.test(input)) {
             return 'Please input a role title.'
             }
+            return true;
         }
     },
     {
@@ -43,6 +45,7 @@ const addRoles = [
             if (!numberRegex.test(input)) {
             return 'Please input a valid numerical amount, exlucing hypens, dashes, or spaces.'
             }
+            return true;
         }
     },
     {
@@ -62,6 +65,7 @@ const addEmployee = [
             if (!nameRegex.test(input)){
                 return 'Please enter a valid first name.';
             }
+            return true;
         },
     },
     {
@@ -72,6 +76,7 @@ const addEmployee = [
             if (!nameRegex.test(input)){
                 return 'Please enter a valid surname name.';
             }
+            return true;
         },
     },
     {
@@ -118,7 +123,7 @@ const viewEmployeesByManager = [
         type: 'list',
         name: 'managerSelection',
         message: 'Please select a manager.',
-        choices: currentManagerChoices,
+        choices: currentManagerNames,
     }
 ]
 
