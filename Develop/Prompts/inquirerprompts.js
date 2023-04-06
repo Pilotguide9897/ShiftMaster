@@ -26,36 +26,41 @@ const addDeptName = [
     }
 ]
 
-// const addRoles = [
-//     {
-//         type: 'input',
-//         name: 'roleName',
-//         message: 'What is the name of the role?',
-//         validate: (input) => {
-//             if (!nameRegex.test(input)) {
-//             return 'Please input a role title.'
-//             }
-//             return true;
-//         }
-//     },
-//     {
-//         type: 'input',
-//         name: 'roleWage',
-//         message: 'What is the salary of the role?',
-//         validate: (input) => {
-//             if (!numberRegex.test(input)) {
-//             return 'Please input a valid numerical amount, exlucing hypens, dashes, or spaces.'
-//             }
-//             return true;
-//         }
-//     },
-//     {
-//         type: 'list',
-//         name: 'roleDept',
-//         message: 'Which department does this role belong to?',
-//         choices: ['Sales', 'Engineering', 'Finance', 'Legal', 'service', 'Information and Technology', 'Public Relations', 'Research and Development', 'Corporate Management', 'Quality Assurance', 'Human Resources']
-//     }
-// ]
+const addRole = [
+    {
+        type: 'input',
+        name: 'roleName',
+        message: 'What is the name of the role?',
+        validate: (input) => {
+            if (!nameRegex.test(input)) {
+            return 'Please input a valid role title.'
+            }
+            return true;
+        }
+    },
+    {
+        type: 'input',
+        name: 'roleWage',
+        message: 'What is the salary of the role?',
+        validate: (input) => {
+            if (!numberRegex.test(input)) {
+            return 'Please input a valid numerical amount, exlucing hypens, dashes, or spaces.'
+            }
+            return true;
+        }
+    },
+    {
+        type: 'list',
+        name: 'roleDept',
+        message: 'Which department does this role belong to?',
+        choices: ['Sales', 'Engineering', 'Finance', 'Legal', 'Customer Service', 'Information and Technology', 'Public Relations', 'Research and Development', 'Corporate Management', 'Quality Assurance', 'Human Resources'],
+        filter: (input) => {
+            const choices = ['Sales', 'Engineering', 'Finance', 'Legal', 'Customer Service', 'Information and Technology', 'Public Relations', 'Research and Development', 'Corporate Management', 'Quality Assurance', 'Human Resources'];
+        const choiceIndex = choices.indexOf(input);
+        return choiceIndex + 1;
+        }
+    }
+]
 
 // const addEmployee = [
 //     {
@@ -186,8 +191,8 @@ const addDeptName = [
 
 module.exports = {
      userAction,
-     addDeptName
-//     addRoles,
+     addDeptName,
+     addRole,
 //     addEmployee,
 //     updateEmployee,
 //     updateEmployeeManager,

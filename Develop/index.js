@@ -99,6 +99,7 @@ const addDepartment = async () => {
     let {addDepartmentName} = await inquirer.prompt(inquirerPrompts.addDeptName);
     dbConnection.query(queries.addDepartment, [addDepartmentName], (err, res) => {
         if (err) {
+            console.error("Error: ", err);
             throw new Error('Unable to add department')
         };
         console.log('\n');
@@ -109,12 +110,15 @@ const addDepartment = async () => {
 };
 
 const addRole = async () => {
-    let {roleName, roleWage, roleDept} = await inquirer.prompt(inquirerPrompts.addRoles);
+    let {roleName, roleWage, roleDept} = await inquirer.prompt(inquirerPrompts.addRole);
     dbConnection.query(queries.addRole, [roleName, roleWage, roleDept], (err, res) => {
         if (err) {
+            console.error("Error: ", err);
             throw new Error('Unable to add role')
         };
-        console.log(`Role '${title} successfully added!`);
+        console.log('\n');
+        console.log(`Role '${roleName} successfully added!`);
+        console.log('\n');
         mainMenuHandler();
     });
 };
@@ -123,6 +127,7 @@ const addRole = async () => {
 //     let {employeeFName, employeeLName, employeeRole, employeeManager} = await inquirer.prompt(inquirerPrompts.addEmployee);
 //     dbConnection.query(queries.addEmployee, [employeeFName, employeeLName, employeeRole, employeeManager], (err, res) => {
 //         if (err) {
+//             console.error("Error: ", err);
 //             throw new Error('Unable to add employee')
 //         };
 //         console.log(`Employee '${employeeFName} ${employeeLName}' successfully added!`);
