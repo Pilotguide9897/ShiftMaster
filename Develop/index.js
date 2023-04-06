@@ -3,6 +3,19 @@ const inquirer = require('inquirer');
 const inquirerPrompts = require('./Prompts/inquirerprompts');
 const queries = require ('./queries'); // import inquirer prompts
 const dbConnection = require('./db');
+const figlet = require('figlet');
+
+figlet ('Employee Manager', function(err, data) {
+    if (err) {
+        console.log('Error printing text art...');
+        console.dir(err);
+        return;
+    }
+    console.log('\n');
+    console.log(data);
+    console.log('\n');
+    mainMenuHandler();
+});
 
 const mainMenuHandler = async function () {
     let response = await inquirer.prompt(inquirerPrompts.userAction);
@@ -12,7 +25,7 @@ switch (response.action) {
         return viewDepartments();
     case 'View All Roles':
         return viewRoles();
-    case 'View Employees':
+    case 'View All Employees':
         return viewEmployees();
     case 'Add Department':
         return addDepartment();
@@ -41,31 +54,40 @@ switch (response.action) {
 
 // Query Functions
 const viewDepartments = () => {
-    dbConnection.query(queries.viewAllDepartments,(err, res) => {
+    dbConnection.query(queries.viewAllDepartments, (err, res) => {
         if (err) {
             throw new Error('Unable to view departments')
         };
+        console.log('\n');
+        console.log(`Viewing Departments:`);
         console.table(res);
+        console.log('\n');
         mainMenuHandler();
     }); 
 }
 
 const viewRoles = () => {
-    dbConnection.query(queries.viewAllRoles,(err, res) => {
+    dbConnection.query(queries.viewAllRoles, (err, res) => {
         if (err) {
             throw new Error('Unable to access database')
         };
+        console.log('\n');
+        console.log(`Viewing Roles:`);
         console.table(res);
+        console.log('\n');
         mainMenuHandler();
     }); 
 };
 
 const viewEmployees = () => {
-    dbConnection.query(queries.viewAllEmployees,(err, res) => {
+    dbConnection.query(queries.viewAllEmployees, (err, res) => {
         if (err) {
             throw new Error('Unable to view employees')
         };
+        console.log('\n');
+        console.log(`Viewing Employees:`);
         console.table(res);
+        console.log('\n');
         mainMenuHandler();
     });
 };
@@ -162,8 +184,6 @@ const viewEmployees = () => {
 //     }
 // }
 
-// Initialize the application 
-mainMenuHandler();
 
 // Close database connection
 const closeApp = function () {
