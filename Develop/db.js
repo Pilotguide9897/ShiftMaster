@@ -10,9 +10,13 @@ const db = mysql.createConnection(
     password: '4Fxj$FFD5mj56Z5RF1*#',
     database: 'company_db'
 });
- connection.connect((err) => {
-    if (err) throw err;
-    console.log('conneced to the database.');
+ db.connect((err) => {
+    if (err) {
+        console.log('Failed to connect to the database.', err);
+        throw err;
+    } else {
+        //console.log ('Connected to the database.');
+    }
 });
 
-module.exports = connection
+module.exports = db;
