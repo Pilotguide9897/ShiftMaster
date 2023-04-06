@@ -168,3 +168,5 @@ const closeApp = function () {
     console.log('Thank you for using our app. Goodbye!')
     connection.end();
 } 
+
+module.exports.getDynamicChoices = getDynamicChoices;

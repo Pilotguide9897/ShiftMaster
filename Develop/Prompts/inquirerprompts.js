@@ -1,4 +1,5 @@
 const inquirer =require('inquirer');
+const { getDynamicChoices } = require('../index');
 const nameRegex = /^(?!.*  )[A-Za-z ]{3,30}$/;
 const numberRegex = /^\d{1,10}$/;
 
@@ -118,14 +119,24 @@ const updateEmployeeManager = [
 
 ]
 
-const viewEmployeesByManager = [
-    {
-        type: 'list',
-        name: 'managerSelection',
-        message: 'Please select a manager.',
-        choices: await getDynamicChoices(),
-    }
-]
+// const viewEmployeesByManager = [
+//     {
+//         type: 'list',
+//         name: 'managerSelection',
+//         message: 'Please select a manager.',
+//         choices: await getDynamicChoices(),
+//     }
+// ]
+
+async function viewEmployeesByManagerPrompt() {
+    return {
+      type: 'list',
+      name: 'managerSelection',
+      message: 'Please select a manager.',
+      choices: await getDynamicChoices(),
+    };
+  }
+  
 
 const viewEmployeesByDepartment = [
     {
@@ -185,6 +196,7 @@ module.exports = {
     deleteDepartment,
     deleteRole,
     deleteEmployee,
-    getUtilizedDepartmentBudget
+    getUtilizedDepartmentBudget,
+    viewEmployeesByManagerPrompt,
 };
 
