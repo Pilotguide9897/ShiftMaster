@@ -109,7 +109,7 @@ const updateEmployeeManager = [
         name: 'employeeofMan',
         message: 'Please select an employee.',
         choices: currentEmployeeChoices,
-    }
+    },
     {
         type: 'list',
         name: 'newManager',
