@@ -95,27 +95,29 @@ const viewEmployees = () => {
     });
 };
 
-// const addDepartment = async () => {
-//     let {deptName} = await inquirer.prompt(inquirerPrompts.addDeptName);
-//     dbConnection.query(queries.addDepartment, [deptName], (err, res) => {
-//         if (err) {
-//             throw new Error('Unable to add department')
-//         };
-//         console.log( `Department '${name}' added successfully!`);
-//         mainMenuHandler();
-//     });
-// };
+const addDepartment = async () => {
+    let {addDepartmentName} = await inquirer.prompt(inquirerPrompts.addDeptName);
+    dbConnection.query(queries.addDepartment, [addDepartmentName], (err, res) => {
+        if (err) {
+            throw new Error('Unable to add department')
+        };
+        console.log('\n');
+        console.log( `Department '${addDepartmentName}' added successfully!`);
+        console.log('\n');
+        mainMenuHandler();
+    });
+};
 
-// const addRole = async () => {
-//     let {roleName, roleWage, roleDept} = await inquirer.prompt(inquirerPrompts.addRoles);
-//     dbConnection.query(queries.addRole, [roleName, roleWage, roleDept], (err, res) => {
-//         if (err) {
-//             throw new Error('Unable to add role')
-//         };
-//         console.log(`Role '${title} successfully added!`);
-//         mainMenuHandler();
-//     });
-// };
+const addRole = async () => {
+    let {roleName, roleWage, roleDept} = await inquirer.prompt(inquirerPrompts.addRoles);
+    dbConnection.query(queries.addRole, [roleName, roleWage, roleDept], (err, res) => {
+        if (err) {
+            throw new Error('Unable to add role')
+        };
+        console.log(`Role '${title} successfully added!`);
+        mainMenuHandler();
+    });
+};
 
 // const addEmployee = async () => {
 //     let {employeeFName, employeeLName, employeeRole, employeeManager} = await inquirer.prompt(inquirerPrompts.addEmployee);

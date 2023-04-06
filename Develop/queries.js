@@ -4,10 +4,8 @@ const { on } = require("./db");
 module.exports = {
     viewAllDepartments: `SELECT id AS "Department ID", name AS "Department Name" FROM department`,
     addDepartment: `INSERT INTO department (name) VALUES (?)`,
-    // viewAllRoles: `SELECT id AS "Role ID", title AS "Role Title" FROM role`,
     viewAllRoles: `SELECT r.id AS "Role ID", r.title AS "Role Title", d.name AS "Department", r.salary AS "Salary" FROM role AS r JOIN department AS d ON r.department_id = d.id`,
     addEmployee: `INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)`,
-    // viewAllEmployees: `SELECT id AS "Employee ID", first_name AS "First Name", last_name AS "Last Name", role_id AS "Position", manager_id AS "Manager ID" FROM employee`,
     viewAllEmployees: `SELECT e.id AS "Employee ID", e.first_name AS "First Name", e.last_name AS "Last Name", r.title AS "Position", CONCAT(m.first_name, ' ', m.last_name) AS "Manager"
     FROM employee as e 
     JOIN role AS r ON r.id = e.role_id

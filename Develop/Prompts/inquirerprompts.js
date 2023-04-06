@@ -12,19 +12,19 @@ const userAction = [
     }
 ]
 
-// const addDeptName = [
-//     {
-//         name: 'addDepartmentName',
-//         type: 'input',
-//         message: 'What is the name of the department?',
-//         validate: (input) => {
-//             if (!nameRegex.test(input)) {
-//             return 'Please input a valid department title.'
-//             }
-//             return true;
-//         }
-//     }
-// ]
+const addDeptName = [
+    {
+        name: 'addDepartmentName',
+        type: 'input',
+        message: 'What is the name of the department?',
+        validate: (input) => {
+            if (!nameRegex.test(input)) {
+            return 'Please input a valid department title.'
+            }
+            return true;
+        }
+    }
+]
 
 // const addRoles = [
 //     {
@@ -185,8 +185,8 @@ const userAction = [
 // ]
 
 module.exports = {
-     userAction
-//     addDeptName,
+     userAction,
+     addDeptName
 //     addRoles,
 //     addEmployee,
 //     updateEmployee,
