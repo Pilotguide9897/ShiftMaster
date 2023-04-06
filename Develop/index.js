@@ -123,17 +123,19 @@ const addRole = async () => {
     });
 };
 
-// const addEmployee = async () => {
-//     let {employeeFName, employeeLName, employeeRole, employeeManager} = await inquirer.prompt(inquirerPrompts.addEmployee);
-//     dbConnection.query(queries.addEmployee, [employeeFName, employeeLName, employeeRole, employeeManager], (err, res) => {
-//         if (err) {
-//             console.error("Error: ", err);
-//             throw new Error('Unable to add employee')
-//         };
-//         console.log(`Employee '${employeeFName} ${employeeLName}' successfully added!`);
-//     mainMenuHandler();
-//     });
-// };
+const addEmployee = async () => {
+    let {employeeFName, employeeLName, employeeRole, employeeManager} = await inquirer.prompt(inquirerPrompts.addEmployee);
+    dbConnection.query(queries.addEmployee, [employeeFName, employeeLName, employeeRole, employeeManager], (err, res) => {
+        if (err) {
+            console.error("Error: ", err);
+            throw new Error('Unable to add employee')
+        };
+        console.log('\n');
+        console.log(`Employee '${employeeFName} ${employeeLName}' successfully added!`);
+        console.log('\n');
+    mainMenuHandler();
+    });
+};
 
 // const updateEmployeeRole = async () => {
 //     let {employeeID, employeeRole} = await inquirer.prompt();
@@ -198,6 +200,7 @@ const addRole = async () => {
 // Close database connection
 const closeApp = function () {
     console.log('Thank you for using our app. Goodbye!')
+    console.log('\n');
     dbConnection.end();
 } 
 

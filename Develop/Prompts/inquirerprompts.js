@@ -62,42 +62,52 @@ const addRole = [
     }
 ]
 
-// const addEmployee = [
-//     {
-//         type: 'input',
-//         name: 'employeeFName',
-//         message: 'What is the employee\'s first name?',
-//         validate: (input) => {
-//             if (!nameRegex.test(input)){
-//                 return 'Please enter a valid first name.';
-//             }
-//             return true;
-//         },
-//     },
-//     {
-//         type: 'input',
-//         name: 'employeeLName',
-//         message: 'What is the employee\'s surname?',
-//         validate: (input) => {
-//             if (!nameRegex.test(input)){
-//                 return 'Please enter a valid surname name.';
-//             }
-//             return true;
-//         },
-//     },
-//     {
-//         type: 'list',
-//         name: 'employeeRole',
-//         message: 'What is the employee\'s role',
-//         choices: ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Account Manager', 'Accountant', 'Legal Team Lead', 'Lawyer', 'Customer Service']
-//     },
-//     {
-//         type: 'list',
-//         name: 'employeeManager',
-//         message: 'Who is the employee\'s manager?',
-//         Choices: ['None', 'John Doe', 'Mike Chan', 'Ashley Rodriguez', 'Kevin Tupik', 'Kunal Singh', 'Malie Brown']
-//     }
-// ]
+const addEmployee = [
+    {
+        type: 'input',
+        name: 'employeeFName',
+        message: 'What is the employee\'s first name?',
+        validate: (input) => {
+            if (!nameRegex.test(input)){
+                return 'Please enter a valid first name.';
+            }
+            return true;
+        },
+    },
+    {
+        type: 'input',
+        name: 'employeeLName',
+        message: 'What is the employee\'s surname?',
+        validate: (input) => {
+            if (!nameRegex.test(input)){
+                return 'Please enter a valid surname name.';
+            }
+            return true;
+        },
+    },
+    {
+        type: 'list',
+        name: 'employeeRole',
+        message: 'What is the employee\'s role',
+        choices: ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Account Manager', 'Accountant', 'Legal Team Lead', 'Lawyer', 'Customer Service'],
+        filter: (input) => {
+            const choices = ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Account Manager', 'Accountant', 'Legal Team Lead', 'Lawyer', 'Customer Service'];
+        const choiceIndex = choices.indexOf(input);
+        return choiceIndex + 1;
+        }
+    },
+    {
+        type: 'list',
+        name: 'employeeManager',
+        message: 'Who is the employee\'s manager?',
+        choices: ['None', 'John Doe', 'Mike Chan', 'Ashley Rodriguez', 'Kevin Tupik', 'Kunal Singh', 'Malie Brown'],
+        filter: (input) => {
+            const choices = ['None', 'John Doe', 'Mike Chan', 'Ashley Rodriguez', 'Kevin Tupik', 'Kunal Singh', 'Malie Brown'];
+        const choiceIndex = choices.indexOf(input);
+        return choiceIndex + 1;
+        }
+    }
+]
 
 // const updateEmployee = [ //come back to...
 //     {
@@ -193,7 +203,7 @@ module.exports = {
      userAction,
      addDeptName,
      addRole,
-//     addEmployee,
+     addEmployee,
 //     updateEmployee,
 //     updateEmployeeManager,
 //     viewEmployeesByManager,
