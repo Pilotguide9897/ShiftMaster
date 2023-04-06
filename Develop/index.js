@@ -136,20 +136,32 @@ const getBudgetByDepartment = async () => {
     let {} = await inquirer.prompt();
 }
 
+
+// Managing manager names for dynamic prompts.
 const currentManagerNames = async () => {
     await new Promise ((resolve, reject) => {
-
-        dbConnection.query(queries.managerNames, [])
-
-
-
-        if (reject) {
+        dbConnection.query(queries.getManagerNames, (err, res) =>
+        {
+            if (err) {
             console.log ('Unable to fetch manager names.');
         } else {
-            resolve 
+            resolve (res);
         }
-    })
+        });
+    });
+};
+
+const getDynamicChoices = async () => {
+    try {
+        const currentManagers = await currentManagerNames();
+        const managerNames = currentManagers.map(manager => `${manager["Manager Name"]} ${manager["Manager Surname"]}`);
+        return managerNames;
+    } catch (err) {
+        console.error(err);
+        return [];
+    }
 }
+
 
 // Close database connection
 const closeApp = function () {

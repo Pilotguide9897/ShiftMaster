@@ -123,7 +123,7 @@ const viewEmployeesByManager = [
         type: 'list',
         name: 'managerSelection',
         message: 'Please select a manager.',
-        choices: currentManagerNames,
+        choices: await getDynamicChoices(),
     }
 ]
 
@@ -132,7 +132,7 @@ const viewEmployeesByDepartment = [
         type: 'list',
         name: 'departmentEmployees',
         message: 'Please select a department',
-        choices: currentDepartmentChoices,
+        choices: await getDynamicChoices(),
     }
 ]
 
