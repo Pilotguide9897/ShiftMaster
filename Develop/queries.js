@@ -11,8 +11,8 @@ module.exports = {
     viewAllEmployees: `SELECT e.id AS "Employee ID", e.first_name AS "First Name", e.last_name AS "Last Name", r.title AS "Position", CONCAT(m.first_name, ' ', m.last_name) AS "Manager"
     FROM employee as e 
     JOIN role AS r ON r.id = e.role_id
-    JOIN departments AS d ON r.department_id = d.id
-    JOIN employee AS m ON m.id = e.manager_id`,
+    JOIN department AS d ON r.department_id = d.id
+    LEFT JOIN employee AS m ON m.id = e.manager_id`,
     addRole: `INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)`,
     updateEmployeeRole: `UPDATE employee SET role_id = ? WHERE id = ?`,
     updateEmployeeManager: `UPDATE employee SET manager_id = ? WHERE id = ?`,

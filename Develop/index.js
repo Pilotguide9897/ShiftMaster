@@ -56,6 +56,7 @@ switch (response.action) {
 const viewDepartments = () => {
     dbConnection.query(queries.viewAllDepartments, (err, res) => {
         if (err) {
+            console.error("Error: ", err);
             throw new Error('Unable to view departments')
         };
         console.log('\n');
@@ -69,6 +70,7 @@ const viewDepartments = () => {
 const viewRoles = () => {
     dbConnection.query(queries.viewAllRoles, (err, res) => {
         if (err) {
+            console.error("Error: ", err);
             throw new Error('Unable to access database')
         };
         console.log('\n');
@@ -82,6 +84,7 @@ const viewRoles = () => {
 const viewEmployees = () => {
     dbConnection.query(queries.viewAllEmployees, (err, res) => {
         if (err) {
+            console.error("Error: ", err);
             throw new Error('Unable to view employees')
         };
         console.log('\n');
