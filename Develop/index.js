@@ -161,10 +161,11 @@ const addEmployee = async () => {
  const deleteRole = async () => {
     try {
         const currentRoles = await fetchCurrentRoles();
-        const rolesList = currentRoles.map(role => ({
+        const rolesList = currentRoles ? currentRoles.map(role => ({
             name: role.title,
             value: role.id
-          }));
+          })) : [];
+          
 
           const { roleIdToDelete } = await inquirer.prompt([
             {
@@ -226,24 +227,40 @@ const addEmployee = async () => {
 
 // Functions to fetch data to allow deletion or updating
 const fetchCurrentRoles = () => {
-    dbConnection.query(`Select DISTINCT id, title, id FROM role`)
-};
+    return new Promise((resolve, reject) => {
+      dbConnection.query(`SELECT DISTINCT title, id FROM role`, (error, results) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+        resolve(results);
+      });
+    });
+  };
+  
+  const fetchCurrentDepartments = () => {
+    return new Promise((resolve, reject) => {
+      dbConnection.query(`Select DISTINCT id, name FROM department`, (error, results) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+        resolve(results);
+      });
+    });
+  };
 
-const fetchCurrentDepartments = () => {
-    dbConnection.query(`Select DISTINCT id, name FROM department`)
-};
-
-const fetchCurrentEmployees = () => {
-    dbConnection.query(`Select first_name, last_name FROM employee`)
-};
-
-
-
-
-
-
-
-
+  const fetchCurrentEmployees = () => {
+    return new Promise((resolve, reject) => {
+      dbConnection.query(`Select first_name, last_name FROM employee`, (error, results) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+        resolve(results);
+      });
+    });
+  };
 
 // Close database connection
 const closeApp = function () {
@@ -252,4 +269,3 @@ const closeApp = function () {
     dbConnection.end();
 } 
 
-// module.exports.getDynamicChoices = getDynamicChoices;
