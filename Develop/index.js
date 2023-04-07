@@ -186,10 +186,12 @@ const updateEmployeeRole = async () => {
 const updateEmployeeManager = async () => {
     try {
         const currentManagers = await fetchCurrentManagers();
+        console.log("Current managers data:", currentManagers);
         const managerList = currentManagers ? currentManagers.map(manager => ({
-            name: `${employee.first_name} ${employee.last_name}`,
-            value: manager.id
+            name: `${manager['Manager Name']} ${manager['Manager Surname']}`,
+            value: manager["Manager's Employee ID"]
         })) : [];
+        
 
         const currentEmployees = await fetchCurrentEmployees();
         const employeeList = currentEmployees ? currentEmployees.map(employee => ({
@@ -201,7 +203,7 @@ const updateEmployeeManager = async () => {
             {
                     type: 'list',
                     name: 'updateEmpRole',
-                    message: 'Which employee\'s role would you like to update?',
+                    message: 'Which employee\'s data would you like to update?',
                     choices: employeeList
         },
         {
