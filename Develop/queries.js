@@ -25,8 +25,8 @@ module.exports = {
         JOIN role AS r ON e.role_id = rl.id
         JOIN department AS dep ON rl.department_id = dep.id
         ORDER BY d.id, e.id`,
-    deleteDepartment: `DELETE FROM department WHERE name = ?`,
-    deleteRole: `DELETE FROM role WHERE title = ?`,
-    deleteEmployee: `DELETE FROM employee WHERE first_name = ? OR last_name = ? OR id = ?`,
+    deleteDepartment: `DELETE FROM department WHERE id = ?`,
+    deleteRole: `DELETE FROM role WHERE id = ?`,
+    deleteEmployee: `DELETE FROM employee WHERE id = ?`,
     getBudgetByDepartment: `SELECT d.id AS "Department ID", d.name AS "Department Title", SUM(r.salary) AS "Total Utilized Budget" FROM department AS d JOIN role AS r ON d.id = r.department_id GROUP BY d.id, d.name`
 };

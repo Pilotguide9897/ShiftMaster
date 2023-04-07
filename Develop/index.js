@@ -173,13 +173,13 @@ const deleteDepartment = async () => {
             }
           ]);
 
-          dbConnection.query(queries.deleteDepartment, [departmentTitle], (err, res) => {
+          dbConnection.query(queries.deleteDepartment, [departmentToDelete], (err, res) => {
             if (err) {
                 console.error("Error: ", err);
                 throw new Error('Unable to remove department')
             };
             console.log('\n');
-            console.log(`Department '${departmentTitle}' successfully removed!`);
+            console.log(`Department removed successfully!`);
             console.log('\n');
         mainMenuHandler();
         });
@@ -206,14 +206,14 @@ const deleteDepartment = async () => {
               choices: rolesList
             }
           ]);
-
-          dbConnection.query(queries.deleteRole, [roleTitle], (err, res) => {
+          console.log(roleToDelete); // undefined
+          dbConnection.query(queries.deleteRole, [roleToDelete], (err, res) => {
             if (err) {
                 console.error("Error: ", err);
-                throw new Error('Unable to remove employee')
+                throw new Error('Unable to remove role')
             };
             console.log('\n');
-            console.log(`Role '${roleTitle}' successfully removed!`);
+            console.log(`Role removed successfully!`);
             console.log('\n');
         mainMenuHandler();
         });
@@ -223,8 +223,6 @@ const deleteDepartment = async () => {
  };
 
  // Delete Employee
-
- // Delete role
  const deleteEmployee = async () => {
     try {
         const currentEmployees = await fetchCurrentEmployees();
@@ -242,13 +240,13 @@ const deleteDepartment = async () => {
             }
           ]);
 
-          dbConnection.query(queries.deleteEmployee, [employeeTitle], (err, res) => {
+          dbConnection.query(queries.deleteEmployee, [employeeToDelete], (err, res) => {
             if (err) {
                 console.error("Error: ", err);
                 throw new Error('Unable to remove employee')
             };
             console.log('\n');
-            console.log(`Employee '${employeeTitle}' successfully removed!`);
+            console.log(`Employee removed successfully!`);
             console.log('\n');
         mainMenuHandler();
         });
