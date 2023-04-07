@@ -162,15 +162,6 @@ const addEmployee = [
 //     }
 // ]
 
-// const getUtilizedDepartmentBudget = [
-//     {
-//         type: 'list',
-//         name: 'departmentBudget',
-//         message: 'Please select a department',
-//         choices: currentDepartmentChoices,
-//     }
-// ]
-
 module.exports = {
      userAction,
      addDeptName,

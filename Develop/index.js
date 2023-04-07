@@ -183,6 +183,40 @@ const updateEmployeeRole = async () => {
 };
 
 // // Functions to add additional functionality
+
+
+ const getBudgetByDepartment = async () => {
+    try {
+        const currentDepartments = await fetchCurrentDepartments();
+        const departmentList = currentDepartments ? currentDepartments.map(department => ({
+            name: department.name,
+            value: department.id
+          })) : [];
+
+    const { departmentChoice } = await inquirer.prompt([
+        {
+            type: 'list',
+            name: 'departmentBudget',
+            message: 'Please select a department',
+            choices: currentDepartments,
+        }
+    ])
+
+          dbConnection.query(queries.getBudgetByDepartment, [departmentChoice], (err, res) => {
+            if (err) {
+                console.error("Error: ", err);
+                throw new Error('Unable to view budget by department')
+            };
+            console.log('\n');
+            console.table(res);
+            console.log('\n');
+            mainMenuHandler();
+        });
+    } catch {
+        console.log('error', error);
+    }
+ };
+
 const updateEmployeeManager = async () => {
     try {
         const currentManagers = await fetchCurrentManagers();
@@ -354,36 +388,6 @@ const deleteDepartment = async () => {
         console.log('error', error);
     }
  };
-
-// const getBudgetByDepartment = async () => {
-//     let {} = await inquirer.prompt();
-// }
-
-
-// // Managing manager names for dynamic prompts.
-// const currentManagerNames = async () => {
-//     await new Promise ((resolve, reject) => {
-//         dbConnection.query(queries.getManagerNames, (err, res) =>
-//         {
-//             if (err) {
-//             console.log ('Unable to fetch manager names.');
-//         } else {
-//             resolve (res);
-//         }
-//         });
-//     });
-// };
-
-// const getDynamicChoices = async () => {
-//     try {
-//         const currentManagers = await currentManagerNames();
-//         const managerNames = currentManagers.map(manager => `${manager["Manager Name"]} ${manager["Manager Surname"]}`);
-//         return managerNames;
-//     } catch (err) {
-//         console.error(err);
-//         return [];
-//     }
-// }
 
 // Functions to fetch data to allow deletion or updating
 const fetchCurrentRoles = () => {
