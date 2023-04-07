@@ -37,7 +37,9 @@ switch (response.action) {
         return viewEmployeeByManager();
     case 'Update Employee Role':
         return updateEmployeeRole();
-    case'View Employees by Manager':
+    case 'Update Employee Manager':
+        return updateEmployeeManager();
+    case 'View Employees by Department':
         return viewEmployeesByDepartment();
     case 'Delete Department':
         return deleteDepartment();
@@ -180,19 +182,75 @@ const updateEmployeeRole = async () => {
     }
 };
 
-
 // // Functions to add additional functionality
-// const updateEmployeeManager = async () => {
-//     let {} = await inquirer.prompt();
-// }
+const updateEmployeeManager = async () => {
+    try {
+        const currentManagers = await fetchCurrentManagers();
+        const managerList = currentManagers ? currentManagers.map(manager => ({
+            name: `${employee.first_name} ${employee.last_name}`,
+            value: manager.id
+        })) : [];
 
-// const viewEmployeeByManager = async () => {
-//     let {} = await inquirer.prompt();
-// }
+        const currentEmployees = await fetchCurrentEmployees();
+        const employeeList = currentEmployees ? currentEmployees.map(employee => ({
+            name: `${employee.first_name} ${employee.last_name}`,
+            value: employee.id
+          })) : [];
 
-// const viewEmployeesByDepartment = async () => {
-//     let {} = await inquirer.prompt();
-// }
+        const { updateEmpRole, managerToReplace } = await inquirer.prompt([
+            {
+                    type: 'list',
+                    name: 'updateEmpRole',
+                    message: 'Which employee\'s role would you like to update?',
+                    choices: employeeList
+        },
+        {
+            type: 'list',
+            name: 'managerToReplace',
+            message: 'Who is to be the employee\'s new manager?',
+            choices: managerList
+          }
+    ]);
+    dbConnection.query(queries.updateEmployeeManager, [managerToReplace, updateEmpRole], (err, res) => {
+        if (err) {
+            console.error("Error: ", err);
+            throw new Error('Unable to update employee manager.')
+        };
+        console.log('\n');
+        console.log(`Employee manager updated successfully!`);
+        console.log('\n');
+        mainMenuHandler();
+        });
+    } catch (error) {
+        console.log('error', error);
+    }
+};
+
+const viewEmployeeByManager = async () => {
+    dbConnection.query(queries.viewEmployeeByManager, (err, res) => {
+        if (err) {
+            console.error("Error: ", err);
+            throw new Error('Unable to view employees by manager')
+        };
+        console.log('\n');
+        console.table(res);
+        console.log('\n');
+        mainMenuHandler();
+    });
+};
+
+const viewEmployeesByDepartment = async () => {
+    dbConnection.query(queries.viewEmployeesByDepartment, (err, res) => {
+        if (err) {
+            console.error("Error: ", err);
+            throw new Error('Unable to view employees by department')
+        };
+        console.log('\n');
+        console.table(res);
+        console.log('\n');
+        mainMenuHandler();
+    });
+};
 
 // Delete Department
 const deleteDepartment = async () => {

@@ -18,13 +18,7 @@ module.exports = {
     
     //bonus queries
     viewEmployeeByManager: `SELECT em.id AS "Employee ID", em.first_name AS "First Name", em.last_name AS "Last Name", man.id AS "Manager ID", man.first_name AS "Manager First Name", man.last_name AS "Manager Last Name" FROM employee AS em LEFT JOIN employee AS man ON em.manager_id = man.id ORDER BY man.id`,
-    viewEmployeesByDepartment: `SELECT em.id AS "Employee ID", em.first_name AS "First Name", em.last_name AS "Last Name"
-        rl.id AS "Role ID", rl.title AS "Role Title",
-        dep.id AS "Department ID, dep.name AS "Department Name"
-        FROM employee AS em
-        JOIN role AS r ON e.role_id = rl.id
-        JOIN department AS dep ON rl.department_id = dep.id
-        ORDER BY d.id, e.id`,
+    viewEmployeesByDepartment: `SELECT em.id AS "Employee ID", em.first_name AS "First Name", em.last_name AS "Last Name", rl.id AS "Role ID", rl.title AS "Role Title", dep.id AS "Department ID", dep.name AS "Department Name" FROM employee AS em JOIN role AS rl ON em.role_id = rl.id JOIN department AS dep ON rl.department_id = dep.id ORDER BY dep.id, em.id`,
     deleteDepartment: `DELETE FROM department WHERE id = ?`,
     deleteRole: `DELETE FROM role WHERE id = ?`,
     deleteEmployee: `DELETE FROM employee WHERE id = ?`,

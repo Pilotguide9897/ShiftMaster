@@ -8,7 +8,7 @@ const userAction = [
         type: 'list',
         name: 'action',
         message: 'What would you like to do?',
-        choices:['View All Departments', 'View All Roles', 'View All Employees', 'Add Department', 'Add Role', 'Add Employee', 'Update Employee Role', 'View Employees by Manager', 'View Employees by Department', 'Delete Department', 'Delete Role', 'Delete Employee', 'Get Budget by Department', 'Exit']
+        choices:['View All Departments', 'View All Roles', 'View All Employees', 'Add Department', 'Add Role', 'Add Employee', 'Update Employee Role', 'Update Employee Manager', 'View Employees by Manager', 'View Employees by Department', 'Delete Department', 'Delete Role', 'Delete Employee', 'Get Budget by Department', 'Exit']
     }
 ]
 
@@ -176,7 +176,7 @@ module.exports = {
      addDeptName,
      addRole,
      addEmployee,
-     updateEmployee,
+//  updateEmployee,
 //     updateEmployeeManager,
 //     viewEmployeesByManager,
 //     viewEmployeesByDepartment,
