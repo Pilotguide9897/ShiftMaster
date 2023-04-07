@@ -137,9 +137,49 @@ const addEmployee = async () => {
     });
 };
 
-// const updateEmployeeRole = async () => {
-//     let {employeeID, employeeRole} = await inquirer.prompt();
-// }
+const updateEmployeeRole = async () => {
+    try {
+        const currentRoles = await fetchCurrentRoles();
+        const rolesList = currentRoles ? currentRoles.map(role => ({
+            name: role.title,
+            value: role.id
+        })) : [];
+
+        const currentEmployees = await fetchCurrentEmployees();
+        const employeeList = currentEmployees ? currentEmployees.map(employee => ({
+            name: `${employee.first_name} ${employee.last_name}`,
+            value: employee.id
+          })) : [];
+
+        const { updateEmpRole, roleToReplace } = await inquirer.prompt([
+            {
+                    type: 'list',
+                    name: 'updateEmpRole',
+                    message: 'Which employee\'s role would you like to update?',
+                    choices: employeeList
+        },
+        {
+            type: 'list',
+            name: 'roleToReplace',
+            message: 'Which role do you want to replace?',
+            choices: rolesList
+          }
+    ]);
+    dbConnection.query(queries.updateEmployeeRole, [roleToReplace, updateEmpRole], (err, res) => {
+        if (err) {
+            console.error("Error: ", err);
+            throw new Error('Unable to update role')
+        };
+        console.log('\n');
+        console.log(`Employee role updated successfully!`);
+        console.log('\n');
+        mainMenuHandler();
+        });
+    } catch (error) {
+        console.log('error', error);
+    }
+};
+
 
 // // Functions to add additional functionality
 // const updateEmployeeManager = async () => {
@@ -164,7 +204,7 @@ const deleteDepartment = async () => {
           })) : [];
           
 
-          const { departmentToDelete } = await inquirer.prompt([
+          const { removeDepartment } = await inquirer.prompt([
             {
                 type: 'list',
                 name: 'removeDepartment',
@@ -173,7 +213,7 @@ const deleteDepartment = async () => {
             }
           ]);
 
-          dbConnection.query(queries.deleteDepartment, [departmentToDelete], (err, res) => {
+          dbConnection.query(queries.deleteDepartment, [removeDepartment], (err, res) => {
             if (err) {
                 console.error("Error: ", err);
                 throw new Error('Unable to remove department')
@@ -313,6 +353,18 @@ const fetchCurrentRoles = () => {
   const fetchCurrentEmployees = () => {
     return new Promise((resolve, reject) => {
       dbConnection.query(`Select id, first_name, last_name FROM employee`, (error, results) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+        resolve(results);
+      });
+    });
+  };
+
+  const fetchCurrentManagers = () => {
+    return new Promise((resolve, reject) => {
+      dbConnection.query(queries.getManagerNames, (error, results) => {
         if (error) {
           reject(error);
           return;

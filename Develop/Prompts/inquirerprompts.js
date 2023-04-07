@@ -109,7 +109,7 @@ const addEmployee = [
     }
 ]
 
-// const updateEmployee = [ //come back to...
+// const updateEmployee = [ 
 //     {
 //         type: 'list',
 //         name: 'updateEmpRole',
@@ -176,7 +176,7 @@ module.exports = {
      addDeptName,
      addRole,
      addEmployee,
-//     updateEmployee,
+     updateEmployee,
 //     updateEmployeeManager,
 //     viewEmployeesByManager,
 //     viewEmployeesByDepartment,
