@@ -154,10 +154,41 @@ const addEmployee = async () => {
 //     let {} = await inquirer.prompt();
 // }
 
-// const deleteDepartment = async () => {
-//     let {} = await inquirer.prompt();
-// }
+// Delete Department
+const deleteDepartment = async () => {
+    try {
+        const currentDepartments = await fetchCurrentDepartments();
+        const departmentList = currentDepartments ? currentDepartments.map(department => ({
+            name: department.name,
+            value: department.id
+          })) : [];
+          
 
+          const { departmentToDelete } = await inquirer.prompt([
+            {
+                type: 'list',
+                name: 'removeDepartment',
+                message: 'Which department would you like to remove?',
+                choices: departmentList,
+            }
+          ]);
+
+          dbConnection.query(queries.deleteDepartment, [departmentTitle], (err, res) => {
+            if (err) {
+                console.error("Error: ", err);
+                throw new Error('Unable to remove department')
+            };
+            console.log('\n');
+            console.log(`Department '${departmentTitle}' successfully removed!`);
+            console.log('\n');
+        mainMenuHandler();
+        });
+    } catch (error) {
+        console.log('error', error);
+    }
+ };
+
+// Delete role
  const deleteRole = async () => {
     try {
         const currentRoles = await fetchCurrentRoles();
@@ -167,10 +198,10 @@ const addEmployee = async () => {
           })) : [];
           
 
-          const { roleIdToDelete } = await inquirer.prompt([
+          const { roleToDelete } = await inquirer.prompt([
             {
               type: 'list',
-              name: 'roleIdToDelete',
+              name: 'roleToDelete',
               message: 'Which role do you want to delete?',
               choices: rolesList
             }
@@ -191,9 +222,40 @@ const addEmployee = async () => {
     }
  };
 
-// const deleteEmployee = async () => {
-//     let {} = await inquirer.prompt();
-// }
+ // Delete Employee
+
+ // Delete role
+ const deleteEmployee = async () => {
+    try {
+        const currentEmployees = await fetchCurrentEmployees();
+        const employeeList = currentEmployees ? currentEmployees.map(employee => ({
+            name: `${employee.first_name} ${employee.last_name}`,
+            value: employee.id
+          })) : [];
+          
+          const { employeeToDelete } = await inquirer.prompt([
+            {
+                type: 'list',
+                name: 'removeEmployee',
+                message: 'Which employee would you like to remove?',
+                choices: employeeList
+            }
+          ]);
+
+          dbConnection.query(queries.deleteEmployee, [employeeTitle], (err, res) => {
+            if (err) {
+                console.error("Error: ", err);
+                throw new Error('Unable to remove employee')
+            };
+            console.log('\n');
+            console.log(`Employee '${employeeTitle}' successfully removed!`);
+            console.log('\n');
+        mainMenuHandler();
+        });
+    } catch (error) {
+        console.log('error', error);
+    }
+ };
 
 // const getBudgetByDepartment = async () => {
 //     let {} = await inquirer.prompt();
@@ -252,7 +314,7 @@ const fetchCurrentRoles = () => {
 
   const fetchCurrentEmployees = () => {
     return new Promise((resolve, reject) => {
-      dbConnection.query(`Select first_name, last_name FROM employee`, (error, results) => {
+      dbConnection.query(`Select id, first_name, last_name FROM employee`, (error, results) => {
         if (error) {
           reject(error);
           return;

@@ -162,26 +162,6 @@ const addEmployee = [
 //     }
 // ]
 
-// const deleteDepartment = [
-//     {
-//         type: 'list',
-//         name: 'removeDepartment',
-//         message: 'Which department would you like to remove?',
-//         choices: deleteDepartmentChoices,
-//     }
-// ]
-
-
-// const deleteEmployee = [
-//     {
-//         type: 'list',
-//         name: 'removeEmployee',
-//         message: 'Which employee would you like to remove?',
-//         choices: currentEmployeeChoices,
-//     }
-    
-// ]
-
 // const getUtilizedDepartmentBudget = [
 //     {
 //         type: 'list',
@@ -200,8 +180,7 @@ module.exports = {
 //     updateEmployeeManager,
 //     viewEmployeesByManager,
 //     viewEmployeesByDepartment,
-//     deleteDepartment,
-//     deleteEmployee,
+
 //     getUtilizedDepartmentBudget,
 //     viewEmployeesByManagerPrompt,
 };
