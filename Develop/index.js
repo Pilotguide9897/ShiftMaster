@@ -158,9 +158,37 @@ const addEmployee = async () => {
 //     let {} = await inquirer.prompt();
 // }
 
-// const deleteRole = async () => {
-//     let {} = await inquirer.prompt();
-// }
+ const deleteRole = async () => {
+    try {
+        const currentRoles = await fetchCurrentRoles();
+        const rolesList = currentRoles.map(role => ({
+            name: role.title,
+            value: role.id
+          }));
+
+          const { roleIdToDelete } = await inquirer.prompt([
+            {
+              type: 'list',
+              name: 'roleIdToDelete',
+              message: 'Which role do you want to delete?',
+              choices: rolesList
+            }
+          ]);
+
+          dbConnection.query(queries.deleteRole, [roleTitle], (err, res) => {
+            if (err) {
+                console.error("Error: ", err);
+                throw new Error('Unable to remove employee')
+            };
+            console.log('\n');
+            console.log(`Role '${roleTitle}' successfully removed!`);
+            console.log('\n');
+        mainMenuHandler();
+        });
+    } catch (error) {
+        console.log('error', error);
+    }
+ };
 
 // const deleteEmployee = async () => {
 //     let {} = await inquirer.prompt();
@@ -195,6 +223,26 @@ const addEmployee = async () => {
 //         return [];
 //     }
 // }
+
+// Functions to fetch data to allow deletion or updating
+const fetchCurrentRoles = () => {
+    dbConnection.query(`Select DISTINCT id, title, id FROM role`)
+};
+
+const fetchCurrentDepartments = () => {
+    dbConnection.query(`Select DISTINCT id, name FROM department`)
+};
+
+const fetchCurrentEmployees = () => {
+    dbConnection.query(`Select first_name, last_name FROM employee`)
+};
+
+
+
+
+
+
+
 
 
 // Close database connection

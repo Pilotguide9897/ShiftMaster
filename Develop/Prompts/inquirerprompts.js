@@ -171,14 +171,6 @@ const addEmployee = [
 //     }
 // ]
 
-// const deleteRole = [
-//     {
-//         type: 'list',
-//         name: 'removeRole',
-//         message: 'Which role would you like to remove?',
-//         choices: removeRoleChoices,
-//     }
-// ]
 
 // const deleteEmployee = [
 //     {
@@ -209,7 +201,6 @@ module.exports = {
 //     viewEmployeesByManager,
 //     viewEmployeesByDepartment,
 //     deleteDepartment,
-//     deleteRole,
 //     deleteEmployee,
 //     getUtilizedDepartmentBudget,
 //     viewEmployeesByManagerPrompt,
