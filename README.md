@@ -2,9 +2,8 @@
 
 ![](https://img.shields.io/badge/License-MIT-yellow.svg)
 ## Description
-ShiftMaster is a command-line application designed for business owners who want to efficiently manage their company's departments, roles, and employees. This application allows users to easily view, add, update, and delete information about their organization, helping them to better plan and organize their business.
+ShiftMaster is a command-line application designed for business owners who want to efficiently manage their company's departments, roles, and employees. This application allows users to easily view, add, update, and delete information about their organization, helping them to better plan and organize their business. As a business owner, ShiftMaster allows you to view and manage the departments, roles, and employees in your company, which helps you organize and plan your business. Extending its basic functionality, ShiftMaster also allows you to:
 
-As a business owner, you can use ShiftMaster to view and manage the departments, roles, and employees in your company, which helps you organize and plan your business. Extending this basic functionality, Shift Master also allows you to:
 - View all departments, roles, and employees in a formatted table.
 - Add departments, roles, and employees to your database.
 - Update employee roles and managers.
