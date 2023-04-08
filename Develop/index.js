@@ -193,16 +193,15 @@ const updateEmployeeRole = async () => {
             value: department.id
           })) : [];
 
-    const { departmentChoice } = await inquirer.prompt([
+    const { departmentBudget } = await inquirer.prompt([
         {
             type: 'list',
             name: 'departmentBudget',
             message: 'Please select a department',
-            choices: currentDepartments,
+            choices: departmentList,
         }
     ])
-
-          dbConnection.query(queries.getBudgetByDepartment, [departmentChoice], (err, res) => {
+          dbConnection.query(queries.getBudgetByDepartment, [departmentBudget], (err, res) => {
             if (err) {
                 console.error("Error: ", err);
                 throw new Error('Unable to view budget by department')
