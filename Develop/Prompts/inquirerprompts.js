@@ -1,5 +1,4 @@
 const inquirer =require('inquirer');
-// const { getDynamicChoices } = require('../index');
 const nameRegex = /^(?!.*  )[A-Za-z ]{3,30}$/;
 const numberRegex = /^\d{1,10}$/;
 
@@ -109,70 +108,10 @@ const addEmployee = [
     }
 ]
 
-// const updateEmployee = [ 
-//     {
-//         type: 'list',
-//         name: 'updateEmpRole',
-//         message: 'Which employee\'s role would you like to update?',
-//         choices: currentEmployeeChoices
-//     }
-// ]
-
-// const updateEmployeeManager = [
-//     {
-//         type: 'list',
-//         name: 'employeeofMan',
-//         message: 'Please select an employee.',
-//         choices: currentEmployeeChoices,
-//     },
-//     {
-//         type: 'list',
-//         name: 'newManager',
-//         message: 'Please select employee\'s new manager',
-//         choices: currentEmployeeChoices,
-//     }
-
-// ]
-
-// const viewEmployeesByManager = [
-//     {
-//         type: 'list',
-//         name: 'managerSelection',
-//         message: 'Please select a manager.',
-//         choices: await getDynamicChoices(),
-//     }
-// ]
-
-// async function viewEmployeesByManagerPrompt() {
-//     return {
-//       type: 'list',
-//       name: 'managerSelection',
-//       message: 'Please select a manager.',
-//       choices: await getDynamicChoices(),
-//     };
-//   }
-  
-
-// const viewEmployeesByDepartment = [
-//     {
-//         type: 'list',
-//         name: 'departmentEmployees',
-//         message: 'Please select a department',
-//         choices: await getDynamicChoices(),
-//     }
-// ]
-
 module.exports = {
      userAction,
      addDeptName,
      addRole,
-     addEmployee,
-//  updateEmployee,
-//     updateEmployeeManager,
-//     viewEmployeesByManager,
-//     viewEmployeesByDepartment,
-
-//     getUtilizedDepartmentBudget,
-//     viewEmployeesByManagerPrompt,
+     addEmployee
 };
 

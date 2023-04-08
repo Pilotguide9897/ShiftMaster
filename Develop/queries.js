@@ -1,5 +1,3 @@
-//const { on } = require("./db");
-
 // Query database
 module.exports = {
     viewAllDepartments: `SELECT id AS "Department ID", name AS "Department Name" FROM department`,

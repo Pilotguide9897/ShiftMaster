@@ -322,39 +322,46 @@ const deleteDepartment = async () => {
  };
 
 // Delete role
- const deleteRole = async () => {
+const deleteRole = async () => {
     try {
-        const currentRoles = await fetchCurrentRoles();
-        const rolesList = currentRoles ? currentRoles.map(role => ({
+      const currentRoles = await fetchCurrentRoles();
+      const rolesList = currentRoles
+        ? currentRoles.map((role) => ({
             name: role.title,
-            value: role.id
-          })) : [];
-          
-
-          const { roleToDelete } = await inquirer.prompt([
-            {
-              type: 'list',
-              name: 'roleToDelete',
-              message: 'Which role do you want to delete?',
-              choices: rolesList
-            }
-          ]);
-          console.log(roleToDelete); // undefined
-          dbConnection.query(queries.deleteRole, [roleToDelete], (err, res) => {
-            if (err) {
-                console.error("Error: ", err);
-                throw new Error('Unable to remove role')
-            };
-            console.log('\n');
-            console.log(`Role removed successfully!`);
-            console.log('\n');
+            value: role.id,
+          }))
+        : [];
+  
+      const { roleToDelete } = await inquirer.prompt([
+        {
+          type: 'list',
+          name: 'roleToDelete',
+          message: 'Which role do you want to delete?',
+          choices: rolesList,
+        },
+      ]);
+      console.log(roleToDelete);
+  
+      dbConnection.query('DELETE FROM employee WHERE role_id = ?', [roleToDelete], (err, res) => {
+        if (err) {
+          console.error('Error: ', err);
+        }
+      });
+      dbConnection.query(queries.deleteRole, [roleToDelete], (err, res) => {
+        if (err) {
+          console.error('Error: ', err);
+          throw new Error('Unable to remove role');
+        }
+        console.log('\n');
+        console.log(`Role removed successfully!`);
+        console.log('\n');
         mainMenuHandler();
-        });
+      });
     } catch (error) {
-        console.log('error', error);
+      console.log('error', error);
     }
- };
-
+  };
+  
  // Delete Employee
  const deleteEmployee = async () => {
     try {
