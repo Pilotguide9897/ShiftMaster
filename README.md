@@ -24,15 +24,9 @@ A video illustrating this application's functionality may be viewed [here]().
 - [License](#license)
 
 ## Screenshots 
-![Placeholder]()
+![Placeholder](https://github.com/Pilotguide9897/ShiftMaster/blob/main/ShiftMaster%20Screenshots/Screenshot%202023-04-08%20at%2012.10.59%20PM.png)
 
-![Placeholder]()
-
-![Placeholder]()
-
-![Placeholder]()
-
-![Placeholder]()
+![Placeholder](https://github.com/Pilotguide9897/ShiftMaster/blob/main/ShiftMaster%20Screenshots/Screenshot%202023-04-08%20at%2012.11.39%20PM.png)
 
 ## Installation
 To install this application, clone the repository to your local machine. You can do this by running the following command in your terminal: 'git clone <repository-url>. The repo url can be obtained by clicking the green code button in the main repo page, clicking the SSH tab, and then copying the URL provided. Once the repo is cloned to the local system, navigate to the directory in the terminal until index.js is located. Index.js is the main file for this application. This application requires that users already have node.js and Node Package Manager (NPM) installed. For more information on installing these technologies please consult their official documentation. 
