@@ -374,7 +374,7 @@ const deleteRole = async () => {
             value: employee.id
           })) : [];
           
-          const { employeeToDelete } = await inquirer.prompt([
+          const { removeEmployee } = await inquirer.prompt([
             {
                 type: 'list',
                 name: 'removeEmployee',
@@ -383,11 +383,12 @@ const deleteRole = async () => {
             }
           ]);
 
-          dbConnection.query(queries.deleteEmployee, [employeeToDelete], (err, res) => {
+          dbConnection.query(queries.deleteEmployee, [removeEmployee], (err, res) => {
             if (err) {
                 console.error("Error: ", err);
                 throw new Error('Unable to remove employee')
             };
+            console.log(removeEmployee);
             console.log('\n');
             console.log(`Employee removed successfully!`);
             console.log('\n');
