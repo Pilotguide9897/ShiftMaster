@@ -207,6 +207,7 @@ const updateEmployeeRole = async () => {
                 throw new Error('Unable to view budget by department')
             };
             console.log('\n');
+            console.log('Viewing Budget by Department:');
             console.table(res);
             console.log('\n');
             mainMenuHandler();
@@ -219,7 +220,7 @@ const updateEmployeeRole = async () => {
 const updateEmployeeManager = async () => {
     try {
         const currentManagers = await fetchCurrentManagers();
-        console.log("Current managers data:", currentManagers);
+        //console.log("Current managers data:", currentManagers);
         const managerList = currentManagers ? currentManagers.map(manager => ({
             name: `${manager['Manager Name']} ${manager['Manager Surname']}`,
             value: manager["Manager's Employee ID"]
@@ -268,6 +269,7 @@ const viewEmployeeByManager = async () => {
             throw new Error('Unable to view employees by manager')
         };
         console.log('\n');
+        console.log("Viewing Employees by Manager:");
         console.table(res);
         console.log('\n');
         mainMenuHandler();
@@ -281,6 +283,7 @@ const viewEmployeesByDepartment = async () => {
             throw new Error('Unable to view employees by department')
         };
         console.log('\n');
+        console.log('Viewing Employees by Department:');
         console.table(res);
         console.log('\n');
         mainMenuHandler();
@@ -371,7 +374,7 @@ const deleteRole = async () => {
             value: employee.id
           })) : [];
           
-          const { employeeToDelete } = await inquirer.prompt([
+          const { removeEmployee } = await inquirer.prompt([
             {
                 type: 'list',
                 name: 'removeEmployee',
@@ -380,11 +383,12 @@ const deleteRole = async () => {
             }
           ]);
 
-          dbConnection.query(queries.deleteEmployee, [employeeToDelete], (err, res) => {
+          dbConnection.query(queries.deleteEmployee, [removeEmployee], (err, res) => {
             if (err) {
                 console.error("Error: ", err);
                 throw new Error('Unable to remove employee')
             };
+            console.log(removeEmployee);
             console.log('\n');
             console.log(`Employee removed successfully!`);
             console.log('\n');

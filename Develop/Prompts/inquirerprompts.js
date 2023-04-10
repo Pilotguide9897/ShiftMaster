@@ -101,9 +101,9 @@ const addEmployee = [
         message: 'Who is the employee\'s manager?',
         choices: ['None', 'John Doe', 'Mike Chan', 'Ashley Rodriguez', 'Kevin Tupik', 'Kunal Singh', 'Malie Brown'],
         filter: (input) => {
-            const choices = ['None', 'John Doe', 'Mike Chan', 'Ashley Rodriguez', 'Kevin Tupik', 'Kunal Singh', 'Malie Brown'];
+            const choices = ['John Doe', 'Mike Chan', 'Ashley Rodriguez', 'Kevin Tupik', 'Kunal Singh', 'Malie Brown'];
         const choiceIndex = choices.indexOf(input);
-        return choiceIndex + 1;
+        return choiceIndex;
         }
     }
 ]
