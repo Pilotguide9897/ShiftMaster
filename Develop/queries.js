@@ -4,7 +4,7 @@ module.exports = {
   addDepartment: `INSERT INTO department (name) VALUES (?)`,
   viewAllRoles: `SELECT r.id AS "Role ID", r.title AS "Role Title", d.name AS "Department", r.salary AS "Salary" FROM role AS r JOIN department AS d ON r.department_id = d.id ORDER BY r.id ASC`,
   addEmployee: `INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)`,
-  viewAllEmployees: `SELECT e.id AS "Employee ID", e.first_name AS "First Name", e.last_name AS "Last Name", r.title AS "Position", CONCAT(m.first_name, ' ', m.last_name) AS "Manager"
+  viewAllEmployees: `SELECT e.id AS "Employee ID", e.first_name AS "First Name", e.last_name AS "Last Name", r.title AS "Position", r.salary AS "Annual Salary", CONCAT(m.first_name, ' ', m.last_name) AS "Manager"
     FROM employee as e 
     JOIN role AS r ON r.id = e.role_id
     JOIN department AS d ON r.department_id = d.id

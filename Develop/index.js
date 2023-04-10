@@ -220,7 +220,7 @@ const updateEmployeeRole = async () => {
 const updateEmployeeManager = async () => {
     try {
         const currentManagers = await fetchCurrentManagers();
-        console.log("Current managers data:", currentManagers);
+        //console.log("Current managers data:", currentManagers);
         const managerList = currentManagers ? currentManagers.map(manager => ({
             name: `${manager['Manager Name']} ${manager['Manager Surname']}`,
             value: manager["Manager's Employee ID"]
