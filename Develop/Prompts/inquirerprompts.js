@@ -103,7 +103,7 @@ const addEmployee = [
         filter: (input) => {
             const choices = ['John Doe', 'Mike Chan', 'Ashley Rodriguez', 'Kevin Tupik', 'Kunal Singh', 'Malie Brown'];
         const choiceIndex = choices.indexOf(input);
-        return choiceIndex;
+        return choiceIndex + 1;
         }
     }
 ]
