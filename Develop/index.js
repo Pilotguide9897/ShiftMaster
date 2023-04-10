@@ -207,6 +207,7 @@ const updateEmployeeRole = async () => {
                 throw new Error('Unable to view budget by department')
             };
             console.log('\n');
+            console.log('Viewing Budget by Department:');
             console.table(res);
             console.log('\n');
             mainMenuHandler();
@@ -268,6 +269,7 @@ const viewEmployeeByManager = async () => {
             throw new Error('Unable to view employees by manager')
         };
         console.log('\n');
+        console.log("Viewing Employees by Manager:");
         console.table(res);
         console.log('\n');
         mainMenuHandler();
@@ -281,6 +283,7 @@ const viewEmployeesByDepartment = async () => {
             throw new Error('Unable to view employees by department')
         };
         console.log('\n');
+        console.log('Viewing Employees by Department:');
         console.table(res);
         console.log('\n');
         mainMenuHandler();

@@ -1,3 +1,6 @@
+-- To allow the database to be re-seeded --
+DROP DATABASE IF EXISTS company_db;
+
 -- To set up the db and necessary tables --
 CREATE DATABASE IF NOT EXISTS company_db;
 
